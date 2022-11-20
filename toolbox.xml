@@ -1,5 +1,5 @@
 <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
-  <category name="GPS" colour="##006666" icon="satellite">
+  <category name="GPS" colour="#006666" icon="satellite">
     <block type="yolobit_gps_create"/>
     <block type="yolobit_gps_read"/>
   </category>
