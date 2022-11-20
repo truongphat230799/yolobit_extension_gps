@@ -1,0 +1,14 @@
+{
+    "name": "GPS",
+    "description": "Mục mở rộng của Yolo:Bit dùng cho module GPS",
+    "libs": [
+        "yolobit_gps.py"
+    ],
+    "blocks": [
+        "definition.js"
+    ],
+    "toolbox": "toolbox.xml",
+    "languages": {
+    },
+    "poster": "poster.png"
+}
