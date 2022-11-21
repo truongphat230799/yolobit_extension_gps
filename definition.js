@@ -166,10 +166,13 @@ Blockly.Blocks['yolobit_gps_create'] = {
 };
 
 Blockly.Python['yolobit_gps_create'] = function(block) {
-    var dropdown_tx_pin = block.getFieldValue('tx_pin');
-    var dropdown_rx_pin = block.getFieldValue('rx_pin');
+    var tx = block.getFieldValue('tx_pin');
+    var rx = block.getFieldValue('rx_pin');
+    Blockly.Python.definitions_['import_yolobit'] = 'from yolobit import *';
+    Blockly.Python.definitions_['import_yolobit_gps'] = 'from yolobit_gps import *';
+    Blockly.Python.definitions_['create_gps'] = 'gps = machine.UART(1, baudrate=9600, rx=' + rx + '.pin, tx=' + tx + '.pin)' + '\n' + 'gps.init(parity=None, stop=1, bits=8)'
     // TODO: Assemble Python into code variable.
-    var code = '...\n';
+    var code = '';
     return code;
 };
 
@@ -186,16 +189,29 @@ Blockly.Blocks['yolobit_gps_read'] = {
                 "options": [
                   [
                     "thời gian",
-                    "time"
+                    "timestamp"
                   ],
                   [
                     "kinh độ",
-                    "lattitude"
+                    "latitude"
                   ],
                   [
                     "vĩ độ",
-                    "longtitude"
+                    "longitude_string()"
+                  ],
+                  [
+                    "độ cao",
+                    "altitude"
+                  ],
+                  [
+                    "số vệ tinh tìm được",
+                    "satellites_in_use"
+                  ],
+                  [
+                    "ngày, giờ",
+                    "date_string('long')"
                   ]
+
                 ]
               }
             ],
@@ -209,9 +225,53 @@ Blockly.Blocks['yolobit_gps_read'] = {
     };
 
     Blockly.Python['yolobit_gps_read'] = function(block) {
-        var dropdown_value = block.getFieldValue('value');
+        var value = block.getFieldValue('value');
         // TODO: Assemble Python into code variable.
-        var code = '...';
+        
+        var code = 'gps.' + value + '\n';
         // TODO: Change ORDER_NONE to the correct strength.
         return [code, Blockly.Python.ORDER_NONE];
       };
+    Blockly.Blocks['yolobit_gps_uart_read'] = {
+        init: function() {
+            this.jsonInit(
+            {
+                "type": "yolobit_gps_uart_read",
+                "message0": "đọc giá trị UART từ GPS",
+                "previousStatement": null,
+                "nextStatement": null,
+                "colour": "#006666",
+                "tooltip": "",
+                "helpUrl": ""
+              }
+          );
+            }
+        };
+    
+    Blockly.Python['yolobit_gps_uart_read'] = function(block) {
+        // TODO: Assemble Python into code variable.
+        var code = 'buf = gps.readline()';
+        return code;
+        };
+
+    Blockly.Blocks['yolobit_gps_update'] = {
+        init: function() {
+            this.jsonInit(
+                {
+                    "type": "yolobit_gps_update",
+                    "message0": "cập nhập giá trị GPS",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "colour": "#006666",
+                    "tooltip": "",
+                    "helpUrl": ""
+                  }
+            );
+                }
+            };
+    
+    Blockly.Python['yolobit_gps_update'] = function(block) {
+        // TODO: Assemble Python into code variable.
+        var code = 'for char in buf:'+'\n'+ 'gps.update(chr(char))';
+        return code;
+        };
