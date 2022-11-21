@@ -211,6 +211,10 @@ Blockly.Blocks['yolobit_gps_read'] = {
                   [
                     "ngày, tháng, năm",
                     "date_string('long')"
+                  ],
+                  [
+                    "tốc độ gió",
+                    "speed_string()"
                   ]
 
                 ]
