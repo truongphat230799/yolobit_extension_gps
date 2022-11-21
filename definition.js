@@ -193,11 +193,11 @@ Blockly.Blocks['yolobit_gps_read'] = {
                     "timestamp"
                   ],
                   [
-                    "kinh độ",
+                    "vĩ độ",
                     "latitude"
                   ],
                   [
-                    "vĩ độ",
+                    "kinh độ",
                     "longitude_string()"
                   ],
                   [
