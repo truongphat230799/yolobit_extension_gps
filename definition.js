@@ -209,7 +209,7 @@ Blockly.Blocks['yolobit_gps_read'] = {
                     "satellites_in_use"
                   ],
                   [
-                    "ngày, giờ",
+                    "ngày, tháng, năm",
                     "date_string('long')"
                   ]
 
@@ -239,7 +239,7 @@ Blockly.Blocks['yolobit_gps_read'] = {
             this.jsonInit(
                 {
                     "type": "yolobit_gps_update",
-                    "message0": "cập nhập giá trị GPS",
+                    "message0": "cập nhập thông tin GPS",
                     "previousStatement": null,
                     "nextStatement": null,
                     "colour": "#006666",
