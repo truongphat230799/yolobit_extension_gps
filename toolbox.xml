@@ -2,7 +2,6 @@
   <category name="GPS" colour="##006666" icon="satellite">
     <block type="yolobit_gps_create"/>
     <block type="yolobit_gps_read"/>
-    <block type="yolobit_gps_uart_read"/>
     <block type="yolobit_gps_update"/>
   </category>
 </xml>
