@@ -170,7 +170,7 @@ Blockly.Python['yolobit_gps_create'] = function(block) {
     var rx = block.getFieldValue('rx_pin');
     Blockly.Python.definitions_['import_yolobit'] = 'from yolobit import *';
     Blockly.Python.definitions_['import_yolobit_gps'] = 'from yolobit_gps import *';
-    Blockly.Python.definitions_['create_uart'] = 'uart = machine.UART(1, baudrate=9600, rx=' + rx + '.pin, tx=' + tx + '.pin)' + '\n' + 'uart.init(parity=None, stop=1, bits=8)';
+    Blockly.Python.definitions_['create_uart'] = 'uart = machine.UART(1, baudrate=9600, rx=' + rx + '.pin, tx=' + tx + '.pin, bits=8, parity=None, stop=1, timeout=5000, rxbuf=1024)';
     Blockly.Python.definitions_['create_gps'] = 'gps = MicropyGPS()';
     // TODO: Assemble Python into code variable.
     var code = '';
@@ -252,6 +252,6 @@ Blockly.Blocks['yolobit_gps_read'] = {
     
     Blockly.Python['yolobit_gps_update'] = function(block) {
         // TODO: Assemble Python into code variable.
-        var code = 'buf = uart.readline()\n' + 'for char in buf:'+'\n'+ 'gps.update(chr(char))';
+        var code = 'buf = uart.readline()\n' + 'for char in buf:'+'\n'+ '\tgps.update(chr(char))\n';
         return code;
         };
