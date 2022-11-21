@@ -170,7 +170,8 @@ Blockly.Python['yolobit_gps_create'] = function(block) {
     var rx = block.getFieldValue('rx_pin');
     Blockly.Python.definitions_['import_yolobit'] = 'from yolobit import *';
     Blockly.Python.definitions_['import_yolobit_gps'] = 'from yolobit_gps import *';
-    Blockly.Python.definitions_['create_gps'] = 'gps = machine.UART(1, baudrate=9600, rx=' + rx + '.pin, tx=' + tx + '.pin)' + '\n' + 'gps.init(parity=None, stop=1, bits=8)'
+    Blockly.Python.definitions_['create_uart'] = 'uart = machine.UART(1, baudrate=9600, rx=' + rx + '.pin, tx=' + tx + '.pin)' + '\n' + 'uart.init(parity=None, stop=1, bits=8)';
+    Blockly.Python.definitions_['create_gps'] = 'gps = MicropyGPS()';
     // TODO: Assemble Python into code variable.
     var code = '';
     return code;
@@ -232,27 +233,6 @@ Blockly.Blocks['yolobit_gps_read'] = {
         // TODO: Change ORDER_NONE to the correct strength.
         return [code, Blockly.Python.ORDER_NONE];
       };
-    Blockly.Blocks['yolobit_gps_uart_read'] = {
-        init: function() {
-            this.jsonInit(
-            {
-                "type": "yolobit_gps_uart_read",
-                "message0": "đọc giá trị UART từ GPS",
-                "previousStatement": null,
-                "nextStatement": null,
-                "colour": "#006666",
-                "tooltip": "",
-                "helpUrl": ""
-              }
-          );
-            }
-        };
-    
-    Blockly.Python['yolobit_gps_uart_read'] = function(block) {
-        // TODO: Assemble Python into code variable.
-        var code = 'buf = gps.readline()';
-        return code;
-        };
 
     Blockly.Blocks['yolobit_gps_update'] = {
         init: function() {
@@ -272,6 +252,6 @@ Blockly.Blocks['yolobit_gps_read'] = {
     
     Blockly.Python['yolobit_gps_update'] = function(block) {
         // TODO: Assemble Python into code variable.
-        var code = 'for char in buf:'+'\n'+ 'gps.update(chr(char))';
+        var code = 'buf = uart.readline()\n' + 'for char in buf:'+'\n'+ 'gps.update(chr(char))';
         return code;
         };
