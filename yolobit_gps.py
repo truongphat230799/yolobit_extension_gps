@@ -185,7 +185,7 @@ class MicropyGPS(object):
             utc_string = self.gps_segments[1]
 
             if utc_string:  # Possible timestamp found
-                hours = (int(utc_string[0:2]) + self.local_offset) % 24 + 7
+                hours = (int(utc_string[0:2]) + self.local_offset) % 24
                 minutes = int(utc_string[2:4])
                 seconds = float(utc_string[4:])
                 self.timestamp = [hours, minutes, seconds]

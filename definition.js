@@ -189,8 +189,16 @@ Blockly.Blocks['yolobit_gps_read'] = {
                 "name": "value",
                 "options": [
                   [
-                    "thời gian",
-                    "timestamp"
+                    "giờ(GMT)",
+                    "timestamp[0]"
+                  ],
+                  [
+                    "phút(GMT)",
+                    "timestamp[1]"
+                  ],
+                  [
+                    "giây(GMT)",
+                    "timestamp[2]"
                   ],
                   [
                     "vĩ độ",
@@ -209,7 +217,7 @@ Blockly.Blocks['yolobit_gps_read'] = {
                     "satellites_in_use"
                   ],
                   [
-                    "ngày, tháng, năm",
+                    "ngày, tháng, năm (GMT)",
                     "date_string('long')"
                   ],
                   [
