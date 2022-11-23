@@ -189,15 +189,15 @@ Blockly.Blocks['yolobit_gps_read'] = {
                 "name": "value",
                 "options": [
                   [
-                    "giờ(GMT)",
+                    "giờ (GMT)",
                     "timestamp[0]"
                   ],
                   [
-                    "phút(GMT)",
+                    "phút (GMT)",
                     "timestamp[1]"
                   ],
                   [
-                    "giây(GMT)",
+                    "giây (GMT)",
                     "timestamp[2]"
                   ],
                   [
